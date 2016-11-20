@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.http.HttpEntity;
@@ -54,5 +56,15 @@ public class MavenCentralSearch {
 		} finally {
 			httpclient.getConnectionManager().shutdown();
 		}
+	}
+
+	public static String getDateOfLibraryVersion(String groupId, String artifactId, String versionNumber) {
+		Library lib = new Library(groupId, artifactId);
+		return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(lib.getDateOfLibraryVersionNumber(versionNumber));
+	}
+
+	public static String getVersionLibraryOnDate(String groupId, String artifactId, String date) throws ParseException {
+		Library lib = new Library(groupId, artifactId);
+		return lib.getVersionLibraryOnDate(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(date));
 	}
 }

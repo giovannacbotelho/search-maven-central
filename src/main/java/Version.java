@@ -2,10 +2,10 @@ import java.util.Date;
 
 public class Version {
 	Date date;
-	String number;
+	String versionNumber;
 	public Version(Date d, String number) {
 		this.date = d;
-		this.number = number;
+		this.versionNumber = number;
 	}
 
 	public Date getDate() {
@@ -16,15 +16,15 @@ public class Version {
 		this.date = date;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getVersionNumber() {
+		return versionNumber;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setVersionNumber(String number) {
+		this.versionNumber = number;
 	}
 
 	public String toString(){
-		return date+ " " + number;
+		return date+ " " + versionNumber;
 	}
 }

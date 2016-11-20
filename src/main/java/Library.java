@@ -36,7 +36,7 @@ public class Library {
 				newerVersion = versionsArray[i];
 			}			
 		}
-		return newerVersion.getNumber();
+		return newerVersion.getVersionNumber();
 	}
 
 	public List<Version> getAllVersions(){
@@ -52,5 +52,21 @@ public class Library {
 			}
 		}
 		return versions;
+	}
+
+	public Date getDateOfLibraryVersionNumber(String versionNumber) {
+		if(versions == null){
+			versions = this.getAllVersions();
+		}
+		Version[] versionsArray = new Version[versions.size()];
+		versionsArray = versions.toArray(versionsArray); 
+
+		for(int i = 0; i < versionsArray.length ; i++){
+			if(versionsArray[i].getVersionNumber().equals(versionNumber)){
+				return versionsArray[i].getDate();
+			}			
+		}
+
+		throw new RuntimeException("There isn't version "+ versionNumber + " available in maven central.");
 	}
 }

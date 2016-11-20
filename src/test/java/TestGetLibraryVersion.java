@@ -1,22 +1,48 @@
 import static org.junit.Assert.assertEquals;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
 import org.joda.time.LocalDate;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class TestGetLibraryVersion {
-
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
+	
 	@Test
 	public void testGetVersionOfLibraryOnDate(){
 		String version = MavenCentralSearch.getVersionLibraryOnDate("org.apache.logging.log4j", "log4j",new Date());
 		assertEquals("2.7", version);
-		
+
 		//25-May-2016  2.6
-		LocalDate myDate =LocalDate.parse("2016-05-26");
+		LocalDate myDate = LocalDate.parse("2016-05-26");
 		version = MavenCentralSearch.getVersionLibraryOnDate("org.apache.logging.log4j", "log4j",myDate.toDate());
 		assertEquals("2.6", version);
+	}
+
+	@Test
+	public void testGetVersionOfLibraryOnDateAsString() throws ParseException{
+		String version = MavenCentralSearch.getVersionLibraryOnDate("org.apache.logging.log4j", "log4j","20/11/2016 11:53:55");
+		assertEquals("2.7", version);
+
+		version = MavenCentralSearch.getVersionLibraryOnDate("org.apache.logging.log4j", "log4j","26/05/2016 11:53:55");
+		assertEquals("2.6", version);
+	}
+	
+	@Test
+	public void testInvalidVersionNumber() throws ParseException{
+		exception.expect(RuntimeException.class);
+		exception.expectMessage("There isn't version 2.6.3 available in maven central.");
+		MavenCentralSearch.getDateOfLibraryVersion("org.apache.logging.log4j", "log4j","2.6.3");	
+	}
+
+	@Test
+	public void testGetDateOfLibraryVersion(){
+		assertEquals("25/05/2016 11:53:55", MavenCentralSearch.getDateOfLibraryVersion("org.apache.logging.log4j", "log4j","2.6"));
 	}
 
 	@Test

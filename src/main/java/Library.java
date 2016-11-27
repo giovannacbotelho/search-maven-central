@@ -21,6 +21,9 @@ public class Library {
 		if(versions == null){
 			versions = this.getAllVersions();
 		}
+		if(versions.isEmpty()){
+			return "No version found";
+		}
 		Version[] versionsArray = new Version[versions.size()];
 		versionsArray = versions.toArray(versionsArray); 
 
@@ -66,7 +69,6 @@ public class Library {
 				return versionsArray[i].getDate();
 			}			
 		}
-
-		throw new RuntimeException("There isn't version "+ versionNumber + " available in maven central.");
+		throw new RuntimeException("There isn't g:"+ groupId + " a:" + artifactId + "in version "+versionNumber + " available in maven central.");
 	}
 }

@@ -60,7 +60,11 @@ public class MavenCentralSearch {
 
 	public static String getDateOfLibraryVersion(String groupId, String artifactId, String versionNumber) {
 		Library lib = new Library(groupId, artifactId);
-		return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(lib.getDateOfLibraryVersionNumber(versionNumber));
+		try {
+			return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(lib.getDateOfLibraryVersionNumber(versionNumber));
+		} catch (Exception e) {
+			return "Date Not Found";
+		}
 	}
 
 	public static String getVersionLibraryOnDate(String groupId, String artifactId, String date) throws ParseException {

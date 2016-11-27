@@ -1,0 +1,4 @@
+HASH,DATE,REPOSITORY,FILE,COMMIT_POSISTION,TOTAL_COMMITS,%_PROJECT,GROUP_ID,ARTIFACT_ID,VERSION,PREVIOUS_VERSION,VERSION_CHANGED,VERSION_EVER_CHANGED,MESSAGE,CURRENT_VERSION_RELEASE,NEWER_VERSION
+baa43fe4c7129cc5710760498cd98729a4cd2686,30/05/2013 16:53:15,ActiveAndroid,E:\metricminer-evolution-stars\ActiveAndroid\tests\pom.xml,117,285,41.05263,com.google.android,android-test,4.1.1.4,initial_version,false,false,Mavenize,24/08/2012 21:15:04,4.1.1.4
+baa43fe4c7129cc5710760498cd98729a4cd2686,30/05/2013 16:53:15,ActiveAndroid,E:\metricminer-evolution-stars\ActiveAndroid\tests\pom.xml,117,285,41.05263,com.activeandroid,activeandroid,1.0-SNAPSHOT,initial_version,false,false,Mavenize,Date Not Found,No version found
+baa43fe4c7129cc5710760498cd98729a4cd2686,30/05/2013 16:53:15,ActiveAndroid,E:\metricminer-evolution-stars\ActiveAndroid\tests\pom.xml,117,285,41.05263,junit,junit,4.10,initial_version,false,false,Mavenize,29/09/2011 16:12:23,4.11

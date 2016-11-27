@@ -39,6 +39,10 @@ public class Library {
 				newerVersion = versionsArray[i];
 			}			
 		}
+		
+		if (newerVersion == null)
+			return "No version found";
+		
 		return newerVersion.getVersionNumber();
 	}
 

@@ -69,6 +69,17 @@ public class MavenCentralSearch {
 
 	public static String getVersionLibraryOnDate(String groupId, String artifactId, String date) throws ParseException {
 		Library lib = new Library(groupId, artifactId);
-		return lib.getVersionLibraryOnDate(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(date));
+		try{
+			return lib.getVersionLibraryOnDate(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(date));
+		}catch(Exception e){
+			if(date.matches("([0-9]{2})/([0-9]{2})/([0-9]{4}) ([0-9]{2}):([0-9]{2})")){
+				return lib.getVersionLibraryOnDate(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(date + ":00"));
+			}
+			else{
+				return "";
+			}
+		}
+		
+	
 	}
 }
